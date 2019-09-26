@@ -1,28 +1,30 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+    <div id="app">
+        <HelloWorld/>
+    </div>
+    
 </template>
-
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.0.0/firebase-app.js"></script>
 <script>
 import HelloWorld from './components/HelloWorld.vue'
 
 export default {
-  name: 'app',
-  components: {
-    HelloWorld
-  }
+    name: 'app',
+    components: {
+        HelloWorld
+    }
 }
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyCbEYUz8wVcFquBUOtItbccvMru9sN-aYA",
+    authDomain: "web-tp01.firebaseapp.com",
+    databaseURL: "https://web-tp01.firebaseio.com",
+    projectId: "web-tp01",
+    storageBucket: "web-tp01.appspot.com",
+    messagingSenderId: "539313047550",
+    appId: "1:539313047550:web:77db35628491131ad2e2af"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
 </script>
-
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
