@@ -3,27 +3,27 @@
         <div v-if="restaurants.length">
             <ol>
                 <li v-for="(restaurant, index) in restaurants" :key="index">
-                    {{restaurant.name}} - {{restaurant.amount}} <button @click="removerestaurant(restaurant)">Remove</button>
+                    {{restaurant.name}} - {{restaurant.amount}} <button @click="removerestaurant(restaurant)">Supprimer</button>
                 </li>
             </ol>
             <p>Total: {{total}}</p>
         </div>
 
         <div v-else>
-            <p>Hooray! You didn't spend anything.</p>
+            <p>Super, vous n'avez rien payé.</p>
         </div>
 
         <hr>
-        <p>New restaurant:</p>
+        <p>Nouveau restaurant:</p>
         <form v-on:submit.prevent>
             <div>
-                <input type="text" v-model="name" placeholder="What did you buy?">
+                <input type="text" v-model="name" placeholder="Nom du restaurant?">
             </div>
             <div>
-                <input type="text" v-model="amount" placeholder="How much is it?">
+                <input type="text" v-model="amount" placeholder="Prix moyen">
             </div>
             <div>
-                <button @click="addrestaurant()">Submit</button>
+                <button @click="addrestaurant()">Ajouter</button>
             </div>
         </form>
     </div> 
