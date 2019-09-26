@@ -1,9 +1,9 @@
 <template>
     <div>
-        <div v-if="expenses.length">
+        <div v-if="restaurants.length">
             <ol>
-                <li v-for="(expense, index) in expenses" :key="index">
-                    {{expense.name}} - {{expense.amount}} <button @click="removeExpense(expense)">Remove</button>
+                <li v-for="(restaurant, index) in restaurants" :key="index">
+                    {{restaurant.name}} - {{restaurant.amount}} <button @click="removerestaurant(restaurant)">Remove</button>
                 </li>
             </ol>
             <p>Total: {{total}}</p>
@@ -14,7 +14,7 @@
         </div>
 
         <hr>
-        <p>New Expense:</p>
+        <p>New restaurant:</p>
         <form v-on:submit.prevent>
             <div>
                 <input type="text" v-model="name" placeholder="What did you buy?">
@@ -23,7 +23,7 @@
                 <input type="text" v-model="amount" placeholder="How much is it?">
             </div>
             <div>
-                <button @click="addExpense()">Submit</button>
+                <button @click="addrestaurant()">Submit</button>
             </div>
         </form>
     </div> 
@@ -38,16 +38,16 @@ export default {
         name: '',
         amount: '',
         total: 0,
-        expenses: []
+        restaurants: []
     }),
     firestore() {
         return {
-            expenses: db.collection('expenses')
+            restaurants: db.collection('restaurant')
         }
     },
     methods: {
-        addExpense() {
-            this.$firestore.expenses.add({
+        addrestaurant() {
+            this.$firestore.restaurants.add({
                 name: this.name,
                 amount: this.amount,
                 dateCreated: new Date()
@@ -55,13 +55,13 @@ export default {
             this.name = ''
             this.amount = ''
         },
-        removeExpense(expense){
-            this.$firestore.expenses.doc(expense['.key']).delete();
+        removerestaurant(restaurant){
+            this.$firestore.restaurants.doc(restaurant['.key']).delete();
         }
     },
     watch: {
-        expenses() {
-            this.total = _.sumBy(this.expenses, function(expense) { return parseFloat(expense.amount); });
+        restaurants() {
+            this.total = _.sumBy(this.restaurants, function(restaurant) { return parseFloat(restaurant.amount); });
         }
     }
 }
