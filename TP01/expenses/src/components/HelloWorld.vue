@@ -3,7 +3,7 @@
         <div v-if="expenses.length">
             <ol>
                 <li v-for="(expense, index) in expenses" :key="index">
-                    {{expense.name}} - {{expense.amount}}
+                    {{expense.name}} - {{expense.amount}} <button @click="removeExpense(expense)">Remove</button>
                 </li>
             </ol>
             <p>Total: {{total}}</p>
@@ -54,6 +54,9 @@ export default {
             })
             this.name = ''
             this.amount = ''
+        },
+        removeExpense(expense){
+            this.$firestore.expenses.doc(expense['.key']).delete();
         }
     },
     watch: {
