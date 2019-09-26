@@ -1,6 +1,6 @@
 <template>
     <div id="app">
-        <HelloWorld/>
+        <Restaurants/>
     </div>
     
 </template>
@@ -19,12 +19,12 @@
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);</script>
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Restaurants from './components/Restaurants.vue'
 
 export default {
     name: 'app',
     components: {
-        HelloWorld
+        Restaurants
     }
 }
   
